@@ -32,8 +32,16 @@ namespace LWM.DeepStorage
         static void Prefix(Frame __instance)
         {
             compDS = null;
-            if (__instance == null) Log.Error("null instance");
-            if (__instance.Map == null) Log.Error("Null map for " + __instance);
+            if (__instance == null)
+            {
+                Log.Error("null instance");
+                return;
+            }
+            if (__instance.Map == null)
+            {
+                Log.Error("Null map for " + __instance);
+                return;
+            }
             __instance.Map.GetComponent<MapComponentDS>().settingsForBlueprintsAndFrames.Remove(__instance, out compDS);
         }
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
